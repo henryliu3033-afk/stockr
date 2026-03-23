@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg:        #0A0A0F;
+  --color-surface:   #111118;
+  --color-surface-2: #1A1A24;
+  --color-surface-3: #22222E;
+  --color-border:    #2A2A38;
+  --color-border-2:  #35354A;
+  --color-text:      #F0F0F8;
+  --color-text-2:    #8888A8;
+  --color-text-3:    #55556A;
+  --color-up:        #22D47A;
+  --color-up-dim:    #0D4A2A;
+  --color-down:      #FF4560;
+  --color-down-dim:  #4A0D1A;
+  --color-accent:    #7C6AF7;
+  --color-accent-2:  #4A3FB0;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+#root { height: 100%; }
+
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+::selection { background: rgba(124,106,247,0.3); }
+
+.font-mono { font-family: var(--font-mono); }
+
+/* Price flash animations */
+@keyframes flash-up {
+  0%   { background-color: rgba(34,212,122,0.2); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-down {
+  0%   { background-color: rgba(255,69,96,0.2); }
+  100% { background-color: transparent; }
+}
+.flash-up   { animation: flash-up   0.6s ease-out; }
+.flash-down { animation: flash-down 0.6s ease-out; }
+
+/* Ticker scroll */
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-track { animation: ticker 40s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+
+/* Page enter */
+.page-enter { animation: pageIn 0.25s ease both; }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse dot for live indicator */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.live-dot { animation: pulse 2s ease-in-out infinite; }
+
+/* Number ticker */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.num-tick { animation: countUp 0.2s ease both; }
