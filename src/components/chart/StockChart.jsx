@@ -119,7 +119,7 @@ export default function StockChart({ symbol, initialPeriod = '1M' }) {
       </div>
 
       {/* Chart area */}
-      <div className="px-2 pt-3 pb-1" className="h-[220px] md:h-[340px]" style={{ height: undefined }}>
+      <div className="px-2 pt-3 pb-1 h-[220px] md:h-[340px]"style={{ height: undefined }}>
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <Spinner size={24} />
